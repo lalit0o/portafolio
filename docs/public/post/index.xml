@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Hola</title>
+    <link>http://localhost:52253/post/</link>
+    <description>Recent content in Posts on Hola</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Feb 2025 10:19:38 -0800</lastBuildDate>
+    <atom:link href="http://localhost:52253/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Practica0</title>
+      <link>http://localhost:52253/post/practica0/</link>
+      <pubDate>Fri, 21 Feb 2025 10:19:38 -0800</pubDate>
+      <guid>http://localhost:52253/post/practica0/</guid>
+      <description>&lt;h1 id=&#34;encabezado-1&#34;&gt;Encabezado 1&lt;/h1&gt;&#xA;&lt;h2 id=&#34;encabezado-2&#34;&gt;Encabezado 2&lt;/h2&gt;&#xA;&lt;h3 id=&#34;encabezado-3&#34;&gt;Encabezado 3&lt;/h3&gt;&#xA;&lt;h4 id=&#34;encabezado-4&#34;&gt;Encabezado 4&lt;/h4&gt;&#xA;&lt;h5 id=&#34;encabezado-5&#34;&gt;Encabezado 5&lt;/h5&gt;&#xA;&lt;p&gt;Este es un texto en italica&lt;/p&gt;&#xA;&lt;p&gt;Este es un texto en &lt;em&gt;Negritas&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Este es un texto &lt;del&gt;tachado&lt;/del&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Elemento 1&lt;/li&gt;&#xA;&lt;li&gt;Elemento 2&lt;/li&gt;&#xA;&lt;li&gt;Elemento 3 &#xA;&lt;ul&gt;&#xA;&lt;li&gt;Elemento 3.1&lt;/li&gt;&#xA;&lt;li&gt;Elemento 3.2&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Elemento 4&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Elemento 1&lt;/li&gt;&#xA;&lt;li&gt;Elemento 2&lt;/li&gt;&#xA;&lt;li&gt;Elemento 3&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Elemento 3.1&lt;/li&gt;&#xA;&lt;li&gt;Elemento 3.2&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Elemento 4&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.google.com&#34; title=&#34;Texto del tooltip&#34;&gt;Texto del enlace&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.uabc.mx&#34;&gt;UABC&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.uabc.mx&#34; title=&#34;Sitio universitario&#34;&gt;UABC&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://imgs.search.brave.com/Q8GmreufhSz-icEVaO3Gbb3JwALvCkuKrC5Ijrzqbeo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMubmF0aW9uYWxn/ZW9ncmFwaGljLmVz/L2ZpbGVzL3N0eWxl/cy9pbWFnZV8zMjAw/L3B1YmxpYy83NTU1/Mi5uZ3N2ZXJzaW9u/LjE0MjIyODU1NTMz/NjAud2VicD93PTE2/MDAmaD0xMDY3&#34; alt=&#34;Texto alternativo&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.uabc.mx&#34; title=&#34;Sitio universitario&#34;&gt;&lt;img src=&#34;./images/code.png&#34; alt=&#34;Escudo de UABC&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;python&#xA;print(&amp;ldquo;Hola mundo!&amp;rdquo;)&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
