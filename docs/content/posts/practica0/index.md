@@ -53,7 +53,6 @@ Este es un texto ~tachado~
 <!-- Imagenes -->
 ![Texto alternativo](https://imgs.search.brave.com/Q8GmreufhSz-icEVaO3Gbb3JwALvCkuKrC5Ijrzqbeo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMubmF0aW9uYWxn/ZW9ncmFwaGljLmVz/L2ZpbGVzL3N0eWxl/cy9pbWFnZV8zMjAw/L3B1YmxpYy83NTU1/Mi5uZ3N2ZXJzaW9u/LjE0MjIyODU1NTMz/NjAud2VicD93PTE2/MDAmaD0xMDY3)
 
-[![Escudo de UABC](./images/code.png)](http://www.uabc.mx "Sitio universitario")
 
 <img src="./images/code.png" alt="uabc image" width="150" height="auto">
 <!-- Bloques de codigo -->
