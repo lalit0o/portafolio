@@ -65,8 +65,9 @@ Para poder hacer un enlace con un texto solo basta con poner el
 
 <!-- Imagenes -->
 Para insertar una imagen, usa la siguiente sintaxis:
+```
 ![Texto alternativo](URL_de_la_imagen "Texto del tooltip")
-
+```
 
 ![Texto alternativo](https://imgs.search.brave.com/Q8GmreufhSz-icEVaO3Gbb3JwALvCkuKrC5Ijrzqbeo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMubmF0aW9uYWxn/ZW9ncmFwaGljLmVz/L2ZpbGVzL3N0eWxl/cy9pbWFnZV8zMjAw/L3B1YmxpYy83NTU1/Mi5uZ3N2ZXJzaW9u/LjE0MjIyODU1NTMz/NjAud2VicD93PTE2/MDAmaD0xMDY3)
 
@@ -74,7 +75,9 @@ Para insertar una imagen, usa la siguiente sintaxis:
 
 <img src="./images/code.png" alt="uabc image" width="150" height="auto">
 <!-- Bloques de codigo -->
-Para un bloque de codigo solo es necesario poner ` tres de eses simbolos
+
+
+Para un bloque de codigo solo es necesario poner ` tres de eses simbolos:
 
 ```txt
 This is a code block
