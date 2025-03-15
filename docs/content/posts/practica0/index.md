@@ -61,19 +61,19 @@ This is a code block
 This is the second line of the code block
 
 
-python
+```python
 print("Hola mundo!")
+```
 
-
-javascript
+```javascript
 console.log('Hello world!')
 
 console.test = ()
+```
 
-
-html
+```html
 <h1>Hola mundo</h1>
-
+```
 
 <!-- como hacer tablas -->
  | Productos | Precio | Cantidad |
