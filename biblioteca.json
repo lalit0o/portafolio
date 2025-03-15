@@ -1,0 +1,13 @@
+{
+    "libros": [
+        {
+            "id": 43,
+            "titulo": "allan",
+            "autor": "luis",
+            "anio_publicacion": 2003,
+            "genero": "sexo",
+            "cantidad": 300
+        }
+    ],
+    "miembros": []
+}
