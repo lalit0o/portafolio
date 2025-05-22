@@ -194,6 +194,348 @@ En la primera sesion se hizo uso de Markdown para construir el esqueleto de la p
 
           </div>
         
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/practica2/" class="color-inherit dim link">
+            Practica 2
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <p><em><strong>Primer código: biblioteca.py</strong></em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;Módulo para definir las clases de la biblioteca y sus operaciones&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> memory_management <span style="color:#f92672">import</span> memory_management
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Genre</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;Clase para definir los generos de los libros&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    FICTION <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Ficcion&#34;</span>
+</span></span><span style="display:flex;"><span>    NON_FICTION <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;No Ficcion&#34;</span>
+</span></span><span style="display:flex;"><span>    SCIENCE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Ciencia&#34;</span>
+</span></span><span style="display:flex;"><span>    HISTORY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Historia&#34;</span>
+</span></span><span style="display:flex;"><span>    FANTASY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Fantasia&#34;</span>
+</span></span><span style="display:flex;"><span>    BIOGRAPHY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Biografia&#34;</span>
+</span></span><span style="display:flex;"><span>    OTHER <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Otro&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@classmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">all_genres</span>(cls):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> [cls<span style="color:#f92672">.</span>FICTION, cls<span style="color:#f92672">.</span>NON_FICTION, cls<span style="color:#f92672">.</span>SCIENCE, cls<span style="color:#f92672">.</span>HISTORY, cls<span style="color:#f92672">.</span>FANTASY, cls<span style="color:#f92672">.</span>BIOGRAPHY, cls<span style="color:#f92672">.</span>OTHER]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Book</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;Clase para definir los libros de la biblioteca&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, book_id, title, author, publication_year, genre, quantity):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>id <span style="color:#f92672">=</span> book_id
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>title <span style="color:#f92672">=</span> title
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>author <span style="color:#f92672">=</span> author
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>publication_year <span style="color:#f92672">=</span> publication_year
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>genre <span style="color:#f92672">=</span> genre
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>quantity <span style="color:#f92672">=</span> quantity
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>increment_heap_allocations(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __del__(self):
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>increment_heap_deallocations(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_dict</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para convertir los datos del libro en un diccionario&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;id&#34;</span>: self<span style="color:#f92672">.</span>id,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;title&#34;</span>: self<span style="color:#f92672">.</span>title,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;author&#34;</span>: self<span style="color:#f92672">.</span>author,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;publication_year&#34;</span>: self<span style="color:#f92672">.</span>publication_year,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;genre&#34;</span>: self<span style="color:#f92672">.</span>genre,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;quantity&#34;</span>: self<span style="color:#f92672">.</span>quantity
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@staticmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">from_dict</span>(data):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para crear un objeto libro a partir de un diccionario&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Book(
+</span></span><span style="display:flex;"><span>            int(data[<span style="color:#e6db74">&#34;id&#34;</span>]),
+</span></span><span style="display:flex;"><span>            data[<span style="color:#e6db74">&#34;title&#34;</span>],
+</span></span><span style="display:flex;"><span>            data[<span style="color:#e6db74">&#34;author&#34;</span>],
+</span></span><span style="display:flex;"><span>            int(data[<span style="color:#e6db74">&#34;publication_year&#34;</span>]),
+</span></span><span style="display:flex;"><span>            data[<span style="color:#e6db74">&#34;genre&#34;</span>],
+</span></span><span style="display:flex;"><span>            int(data[<span style="color:#e6db74">&#34;quantity&#34;</span>])
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DigitalBook</span>(Book):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;Clase para definir los libros digitales de la biblioteca&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, book_id, title, author, publication_year, genre, quantity, file_format):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Constructor de la clase DigitalBook&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__(book_id, title, author, publication_year, genre, quantity)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>file_format <span style="color:#f92672">=</span> file_format
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_dict</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para convertir los datos del libro digital en un diccionario&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> super()<span style="color:#f92672">.</span>to_dict()
+</span></span><span style="display:flex;"><span>        data[<span style="color:#e6db74">&#34;file_format&#34;</span>] <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>file_format
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> data
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@staticmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">from_dict</span>(data):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para crear un objeto libro digital a partir de un diccionario&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> DigitalBook(
+</span></span><span style="display:flex;"><span>            int(data[<span style="color:#e6db74">&#34;id&#34;</span>]),
+</span></span><span style="display:flex;"><span>            data[<span style="color:#e6db74">&#34;title&#34;</span>],
+</span></span><span style="display:flex;"><span>            data[<span style="color:#e6db74">&#34;author&#34;</span>],
+</span></span><span style="display:flex;"><span>            int(data[<span style="color:#e6db74">&#34;publication_year&#34;</span>]),
+</span></span><span style="display:flex;"><span>            data[<span style="color:#e6db74">&#34;genre&#34;</span>],
+</span></span><span style="display:flex;"><span>            int(data[<span style="color:#e6db74">&#34;quantity&#34;</span>]),
+</span></span><span style="display:flex;"><span>            data[<span style="color:#e6db74">&#34;file_format&#34;</span>]
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Member</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;Clase para definir los miembros de la biblioteca&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, member_id, name):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Constructor de la clase Member&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>id <span style="color:#f92672">=</span> member_id
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>issued_books <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>increment_heap_allocations(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __del__(self):
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>increment_heap_deallocations(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_dict</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para convertir los datos del miembro en un diccionario&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;id&#34;</span>: self<span style="color:#f92672">.</span>id,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;name&#34;</span>: self<span style="color:#f92672">.</span>name,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;issued_books&#34;</span>: self<span style="color:#f92672">.</span>issued_books
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@staticmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">from_dict</span>(data):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para crear un objeto miembro a partir de un diccionario&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        member <span style="color:#f92672">=</span> Member(int(data[<span style="color:#e6db74">&#34;id&#34;</span>]), data[<span style="color:#e6db74">&#34;name&#34;</span>])
+</span></span><span style="display:flex;"><span>        member<span style="color:#f92672">.</span>issued_books <span style="color:#f92672">=</span> data[<span style="color:#e6db74">&#34;issued_books&#34;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> member
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Library</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;Clase para definir la biblioteca&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Constructor de la clase Library&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>books <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>members <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>increment_heap_allocations(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __del__(self):
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>increment_heap_deallocations(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_book</span>(self, book):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para agregar un libro a la biblioteca&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>books<span style="color:#f92672">.</span>append(book)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">El libro fue agregado exitosamente!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>display_memory_usage()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_book_by_id</span>(self, book_id):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para buscar un libro por su ID&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> book <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>books:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> book<span style="color:#f92672">.</span>id <span style="color:#f92672">==</span> book_id:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> book
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">display_books</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para mostrar los libros disponibles en la biblioteca&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> self<span style="color:#f92672">.</span>books:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">No hay libros disponibles.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Libros disponibles en biblioteca:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> book <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>books:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;ID libro: </span><span style="color:#e6db74">{</span>book<span style="color:#f92672">.</span>id<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Titulo: </span><span style="color:#e6db74">{</span>book<span style="color:#f92672">.</span>title<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Autor: </span><span style="color:#e6db74">{</span>book<span style="color:#f92672">.</span>author<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Ano de publicacion: </span><span style="color:#e6db74">{</span>book<span style="color:#f92672">.</span>publication_year<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Genero: </span><span style="color:#e6db74">{</span>book<span style="color:#f92672">.</span>genre<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Cantidad: </span><span style="color:#e6db74">{</span>book<span style="color:#f92672">.</span>quantity<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> isinstance(book, DigitalBook):
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Formato de archivo: </span><span style="color:#e6db74">{</span>book<span style="color:#f92672">.</span>file_format<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>display_memory_usage()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_member</span>(self, member):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para agregar un miembro a la biblioteca&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>members<span style="color:#f92672">.</span>append(member)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Miembro agregado exitosamente!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>display_memory_usage()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">issue_book</span>(self, book_id, member_id):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para prestar un libro a un miembro&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        book <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>find_book_by_id(book_id)
+</span></span><span style="display:flex;"><span>        member <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>find_member_by_id(member_id)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Debug##book[</span><span style="color:#e6db74">{</span>book<span style="color:#e6db74">}</span><span style="color:#e6db74">] member[</span><span style="color:#e6db74">{</span>member<span style="color:#e6db74">}</span><span style="color:#e6db74">] </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> book <span style="color:#f92672">and</span> member <span style="color:#f92672">and</span> book<span style="color:#f92672">.</span>quantity <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            book<span style="color:#f92672">.</span>quantity <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>            member<span style="color:#f92672">.</span>issued_books<span style="color:#f92672">.</span>append(book_id)
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Libro prestado satisfactoriamente!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Libro o miembro no encontrados.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>display_memory_usage()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">return_book</span>(self, book_id, member_id):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para devolver un libro prestado por un miembro&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        book <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>find_book_by_id(book_id)
+</span></span><span style="display:flex;"><span>        member <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>find_member_by_id(member_id)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> book <span style="color:#f92672">and</span> member <span style="color:#f92672">and</span> book_id <span style="color:#f92672">in</span> member<span style="color:#f92672">.</span>issued_books:
+</span></span><span style="display:flex;"><span>            book<span style="color:#f92672">.</span>quantity <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>            member<span style="color:#f92672">.</span>issued_books<span style="color:#f92672">.</span>remove(book_id)
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Libro devuelto satisfactoriamente!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Libro o miembro no encontrados.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>display_memory_usage()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_member_by_id</span>(self, member_id):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para buscar un miembro por su ID&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> member <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>members:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> member<span style="color:#f92672">.</span>id <span style="color:#f92672">==</span> member_id:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> member
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">display_members</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para mostrar los miembros disponibles en la biblioteca&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> self<span style="color:#f92672">.</span>members:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">No hay miembros disponibles.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Miembros disponibles en biblioteca:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> member <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>members:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;ID miembro: </span><span style="color:#e6db74">{</span>member<span style="color:#f92672">.</span>id<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Nombre: </span><span style="color:#e6db74">{</span>member<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Cantidad de libros prestados: </span><span style="color:#e6db74">{</span>len(member<span style="color:#f92672">.</span>issued_books)<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> book_id <span style="color:#f92672">in</span> member<span style="color:#f92672">.</span>issued_books:
+</span></span><span style="display:flex;"><span>                book <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>find_book_by_id(book_id)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> book:
+</span></span><span style="display:flex;"><span>                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;  Libro ID: </span><span style="color:#e6db74">{</span>book<span style="color:#f92672">.</span>id<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">  Titulo: </span><span style="color:#e6db74">{</span>book<span style="color:#f92672">.</span>title<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">  Autor: </span><span style="color:#e6db74">{</span>book<span style="color:#f92672">.</span>author<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>display_memory_usage()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">search_member</span>(self, member_id):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para buscar un miembro por su ID y mostrar los libros prestados&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        member <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>find_member_by_id(member_id)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> member:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;ID miembro: </span><span style="color:#e6db74">{</span>member<span style="color:#f92672">.</span>id<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Nombre: </span><span style="color:#e6db74">{</span>member<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Cantidad de libros prestados: </span><span style="color:#e6db74">{</span>len(member<span style="color:#f92672">.</span>issued_books)<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> book_id <span style="color:#f92672">in</span> member<span style="color:#f92672">.</span>issued_books:
+</span></span><span style="display:flex;"><span>                book <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>find_book_by_id(book_id)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> book:
+</span></span><span style="display:flex;"><span>                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;  Libro ID: </span><span style="color:#e6db74">{</span>book<span style="color:#f92672">.</span>id<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">  Titulo: </span><span style="color:#e6db74">{</span>book<span style="color:#f92672">.</span>title<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">  Autor: </span><span style="color:#e6db74">{</span>book<span style="color:#f92672">.</span>author<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Miembro no encontrado.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>display_memory_usage()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">save_library_to_file</span>(self, filename):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para guardar la biblioteca en un archivo JSON&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(filename, <span style="color:#e6db74">&#39;w&#39;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;UTF-8&#39;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>            json<span style="color:#f92672">.</span>dump([book<span style="color:#f92672">.</span>to_dict() <span style="color:#66d9ef">for</span> book <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>books], file)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Biblioteca guardada exitosamente en </span><span style="color:#e6db74">{</span>filename<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>display_memory_usage()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_library_from_file</span>(self, filename):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para cargar la biblioteca desde un archivo JSON&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">with</span> open(filename, <span style="color:#e6db74">&#39;r&#39;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;UTF-8&#39;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>                books_data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(file)
+</span></span><span style="display:flex;"><span>                self<span style="color:#f92672">.</span>books <span style="color:#f92672">=</span> [DigitalBook<span style="color:#f92672">.</span>from_dict(data) <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;file_format&#34;</span> <span style="color:#f92672">in</span> data <span style="color:#66d9ef">else</span> Book<span style="color:#f92672">.</span>from_dict(data) <span style="color:#66d9ef">for</span> data <span style="color:#f92672">in</span> books_data]
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Biblioteca cargada exitosamente desde </span><span style="color:#e6db74">{</span>filename<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">FileNotFoundError</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Error al abrir el archivo para cargar la biblioteca.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>display_memory_usage()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">save_members_to_file</span>(self, filename):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para guardar los miembros en un archivo JSON&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(filename, <span style="color:#e6db74">&#39;w&#39;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;UTF-8&#39;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>            json<span style="color:#f92672">.</span>dump([member<span style="color:#f92672">.</span>to_dict() <span style="color:#66d9ef">for</span> member <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>members], file)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Miembros guardados exitosamente en </span><span style="color:#e6db74">{</span>filename<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>display_memory_usage()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_members_from_file</span>(self, filename):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;Método para cargar los miembros desde un archivo JSON&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">with</span> open(filename, <span style="color:#e6db74">&#39;r&#39;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;UTF-8&#39;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>                members_data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(file)
+</span></span><span style="display:flex;"><span>                self<span style="color:#f92672">.</span>members <span style="color:#f92672">=</span> [Member<span style="color:#f92672">.</span>from_dict(data) <span style="color:#66d9ef">for</span> data <span style="color:#f92672">in</span> members_data]
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Miembros cargados exitosamente desde </span><span style="color:#e6db74">{</span>filename<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">FileNotFoundError</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Error al abrir el archivo para cargar los miembros.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        memory_management<span style="color:#f92672">.</span>display_memory_usage()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;Función principal para ejecutar el programa&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    library <span style="color:#f92672">=</span> Library()
+</span></span><span style="display:flex;"><span>    library<span style="color:#f92672">.</span>load_library_from_file(<span style="color:#e6db74">&#34;library.json&#34;</span>)
+</span></span><span style="display:flex;"><span>    library<span style="color:#f92672">.</span>load_members_from_file(<span style="color:#e6db74">&#34;members.json&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Menu de sistema de manejo de biblioteca</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">1. Agregar un libro&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">2. Mostrar libros disponibles&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">3. Agregar un miembro&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">4. Prestar libro&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">5. Devolver libro&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">6. Mostrar miembros disponibles&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">7. Buscar miembro&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">8. Guardar y salir&#34;</span>)
+</span></span><span style="display:flex;"><span>        choice <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Indica tu opcion: &#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> choice <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>            book_id <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Ingresa ID del libro: &#34;</span>))
+</span></span><span style="display:flex;"><span>            title <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;Ingresa titulo del libro: &#34;</span>)
+</span></span><span style="display:flex;"><span>            author <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;Ingresa nombre del autor: &#34;</span>)
+</span></span><span style="display:flex;"><span>            publication_year <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Ingresa el ano de publicacion: &#34;</span>))
+</span></span><span style="display:flex;"><span>            genre <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;Ingresa el genero del libro: &#34;</span>)
+</span></span><span style="display:flex;"><span>            quantity <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Ingresa la cantidad de libros: &#34;</span>))
+</span></span><span style="display:flex;"><span>            is_digital <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;Es un libro digital? (s/n): &#34;</span>)<span style="color:#f92672">.</span>lower() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;s&#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> is_digital:
+</span></span><span style="display:flex;"><span>                file_format <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;Ingresa el formato del archivo: &#34;</span>)
+</span></span><span style="display:flex;"><span>                book <span style="color:#f92672">=</span> DigitalBook(book_id, title, author, publication_year, genre, quantity, file_format)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                book <span style="color:#f92672">=</span> Book(book_id, title, author, publication_year, genre, quantity)
+</span></span><span style="display:flex;"><span>            library<span style="color:#f92672">.</span>add_book(book)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> choice <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>            library<span style="color:#f92672">.</span>display_books()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> choice <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>:
+</span></span><span style="display:flex;"><span>            member_id <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Ingresa el ID del miembro: &#34;</span>))
+</span></span><span style="display:flex;"><span>            name <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;Ingresa el nombre del miembro: &#34;</span>)
+</span></span><span style="display:flex;"><span>            member <span style="color:#f92672">=</span> Member(member_id, name)
+</span></span><span style="display:flex;"><span>            library<span style="color:#f92672">.</span>add_member(member)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> choice <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span>:
+</span></span><span style="display:flex;"><span>            member_id <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Ingresa el ID del miembro: &#34;</span>))
+</span></span><span style="display:flex;"><span>            book_id <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Ingresa el ID del libro: &#34;</span>))
+</span></span><span style="display:flex;"><span>            library<span style="color:#f92672">.</span>issue_book(book_id, member_id)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> choice <span style="color:#f92672">==</span> <span style="color:#ae81ff">5</span>:
+</span></span><span style="display:flex;"><span>            member_id <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Ingresa el ID del miembro: &#34;</span>))
+</span></span><span style="display:flex;"><span>            book_id <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Ingresa el ID del libro: &#34;</span>))
+</span></span><span style="display:flex;"><span>            library<span style="color:#f92672">.</span>return_book(book_id, member_id)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> choice <span style="color:#f92672">==</span> <span style="color:#ae81ff">6</span>:
+</span></span><span style="display:flex;"><span>            library<span style="color:#f92672">.</span>display_members()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> choice <span style="color:#f92672">==</span> <span style="color:#ae81ff">7</span>:
+</span></span><span style="display:flex;"><span>            member_id <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Ingresa el ID del miembro: &#34;</span>))
+</span></span><span style="display:flex;"><span>            library<span style="color:#f92672">.</span>search_member(member_id)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> choice <span style="color:#f92672">==</span> <span style="color:#ae81ff">8</span>:
+</span></span><span style="display:flex;"><span>            library<span style="color:#f92672">.</span>save_library_to_file(<span style="color:#e6db74">&#34;library.json&#34;</span>)
+</span></span><span style="display:flex;"><span>            library<span style="color:#f92672">.</span>save_members_to_file(<span style="color:#e6db74">&#34;members.json&#34;</span>)
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Saliendo del programa</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Esta no es una opcion valida!!!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><ol>
+<li>
+<p><strong>Nombres</strong>:</p>
+        </div>
+        <a href="/posts/practica2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
       </section>
 
       
