@@ -1,3 +1,9 @@
++++
+date = '2025-05-22T10:18:14-08:00'
+draft = false
+title = 'Practica 3'
++++
+
 # Aplicación TODO en Haskell
 
 Este proyecto implementa una aplicación web sencilla para gestionar tareas (una lista "TODO") utilizando Haskell. El código está estructurado de manera clara para ilustrar cómo construir una aplicación funcional básica usando el lenguaje Haskell y algunas de sus bibliotecas web.
