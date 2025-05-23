@@ -6,8 +6,15 @@
     <description>Recent content on Hola</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2025 10:18:14 -0800</lastBuildDate>
+    <lastBuildDate>Thu, 22 May 2025 10:18:14 -0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Practica 3</title>
+      <link>http://localhost:1313/posts/practica3/</link>
+      <pubDate>Thu, 22 May 2025 10:18:14 -0800</pubDate>
+      <guid>http://localhost:1313/posts/practica3/</guid>
+      <description>&lt;h1 id=&#34;aplicación-todo-en-haskell&#34;&gt;Aplicación TODO en Haskell&lt;/h1&gt;&#xA;&lt;p&gt;Este proyecto implementa una aplicación web sencilla para gestionar tareas (una lista &amp;ldquo;TODO&amp;rdquo;) utilizando Haskell. El código está estructurado de manera clara para ilustrar cómo construir una aplicación funcional básica usando el lenguaje Haskell y algunas de sus bibliotecas web.&lt;/p&gt;&#xA;&lt;h2 id=&#34;estructura-del-proyecto&#34;&gt;Estructura del Proyecto&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;examples/blog/todo/&#xD;&#xA;├── Main.hs       -- Punto de entrada del servidor web&#xD;&#xA;├── Todo.hs       -- Lógica principal para operaciones sobre tareas&#xD;&#xA;├── Views.hs      -- Renderizado de HTML&#xD;&#xA;├── Models.hs     -- Definición del modelo de datos (si aplica)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;funcionamiento-general&#34;&gt;Funcionamiento General&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-inicio-del-servidor&#34;&gt;1. Inicio del Servidor&lt;/h3&gt;&#xA;&lt;p&gt;El archivo &lt;code&gt;Main.hs&lt;/code&gt; configura e inicia un servidor web con el microframework &lt;code&gt;Scotty&lt;/code&gt;. Aquí se definen las rutas que manejarán las operaciones CRUD de las tareas:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Practica 0</title>
       <link>http://localhost:1313/posts/practica0/</link>

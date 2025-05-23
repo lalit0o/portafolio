@@ -116,3 +116,4 @@ deleteTodoFromDB :: Int -> IO ()
 - Lucid (generación de HTML)
 - SQLite o almacenamiento en memoria (según la implementación)
 
+Link de la pagina: https://lalit0o.github.io/portafolio/
