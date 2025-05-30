@@ -42,7 +42,7 @@ Esto implica que para que X sea el abuelo de Y, Z debe ser padre de Y y X debe s
 
 Algunos programas básicos de Prolog son los siguientes ejemplos:
 
-´´´prolog
+```prolog
 
 can_cook(proya).
 
@@ -54,10 +54,10 @@ likes(priya,jasmin) :- can_cook(jasmin).
 
 likes(priya,timoteo) :- can_cook(timoteo).
 
-´´´
+```
 
 
-´´´prolog
+```prolog
 parent(simon, pedro).
 parent(simon, raj).
 male(pedro).
@@ -65,7 +65,7 @@ male(raj).
 
 brother(X,Y) :- parent(Z,X), parent(Z,Y), male(X), male(Y).
 
-´´´
+```
 
 ***Sesion 3***
 
